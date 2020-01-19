@@ -1,8 +1,8 @@
 {
   "name": "@txo/flow",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Technology Studio - Flow",
-  "main": "index.js",
+  "main": "lib/index.js",
   "typings": "index.d.ts",
   "repository": {
     "type": "git",
@@ -16,6 +16,11 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "build": "yarn build:clean && yarn build:lib && yarn build:flow",
+    "build:clean": "yarn rimraf lib",
+    "build:lib": "yarn babel src --out-dir lib --ignore **/__tests__/**",
+    "build:flow": "yarn flow-copy-source -i '**/__tests__/**' src lib",
+    "prepare": "yarn build"
   },
   "dependencies": {
   },
